@@ -5,7 +5,7 @@ export const APP_METADATA = {
     SITE_AUTHOR: 'fberger',
     SITE_NAME: 'safes-trades',
     SITE_INFO: 'SITE_INFO',
-    SITE_DESCRIPTION: 'SITE_DESCRIPTION',
+    SITE_DESCRIPTION: 'One linktree to manage all your safes',
     SITE_URL: 'https://safes-trades.vercel.app/',
     SOCIALS: {
         TWITTER: 'fberger_xyz',
