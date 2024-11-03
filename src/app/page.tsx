@@ -49,8 +49,8 @@ export default function Page() {
         <PageWrapper className="mb-10 gap-5">
             <div className="flex w-full flex-col gap-2.5 border-l border-light-hover">
                 {/* addresses */}
-                <p className="pl-6 text-light-hover">safes</p>
-                <div className="flex items-start gap-2.5 border-b border-light-hover pb-6 pl-6">
+                <p className="pl-5 text-light-hover">safes</p>
+                <div className="flex items-start gap-2.5 border-b border-light-hover pb-5 pl-5">
                     {parsedParams
                         .filter((param) => param.isAddress)
                         .map((address, addressIndex) => (
@@ -73,8 +73,8 @@ export default function Page() {
                 </div>
 
                 {/* chains */}
-                <p className="pl-6 text-light-hover">chains</p>
-                <div className="flex gap-2.5 border-b border-light-hover px-6 pb-6">
+                <p className="pl-5 text-light-hover">chains</p>
+                <div className="flex items-start gap-2.5 border-b border-light-hover pb-5 pl-5">
                     {Object.values(chainsConfig)
                         .sort((curr, next) => curr.index - next.index)
                         .map((chain) => (
@@ -98,7 +98,7 @@ export default function Page() {
                 </div>
 
                 {/* apps */}
-                <div className="flex flex-wrap gap-x-6 gap-y-4 pl-6">
+                <div className="flex flex-wrap gap-x-6 gap-y-4 border-b border-light-hover pb-5 pl-5">
                     {supportedCategoriesConfig.map((category) => (
                         <div key={category.name} className="flex flex-col gap-2.5">
                             <p className="w-12 text-light-hover">{category.name}</p>
@@ -124,6 +124,12 @@ export default function Page() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* pending orders */}
+                <p className="pl-5 text-light-hover">orders</p>
+                <div className="flex items-start gap-2.5 pb-5 pl-5">
+                    <p className="pl-5 text-light-hover">none</p>
                 </div>
             </div>
         </PageWrapper>
