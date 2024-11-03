@@ -22,17 +22,17 @@ export default function HeaderButton(props: { pagePath: AppPagePaths; disabled?:
             if (links[linkIndex].sublinks[sublinkIndex].path === props.pagePath) link = links[linkIndex].sublinks[sublinkIndex]
         }
     }
+
+    // html
+    if (!link?.enabled) return null
     return (
         <LinkWrapper
             href={props.disabled ? pathname : props.pagePath}
-            className={cn('rounded-md px-1.5 sm:px-2.5 py-1.5 sm:py-1 hover:bg-light-hover bg-opacity-50 group', {
+            className={cn('rounded-md px-2 sm:px-2.5 py-0.5 hover:bg-light-hover bg-opacity-50', {
                 'bg-light-hover': isCurrentPath(),
             })}
         >
-            <p>
-                <span className={cn({ 'text-inactive': isCurrentPath(), 'text-light-hover group-hover:text-inactive': !isCurrentPath() })}>/</span>
-                <span className={cn({ 'text-primary': isCurrentPath(), 'text-inactive': !isCurrentPath() })}>{link?.name ?? 'Not found'}</span>
-            </p>
+            <p className={cn({ 'text-primary': isCurrentPath(), 'text-inactive': !isCurrentPath() })}>{link?.name ?? 'Not found'}</p>
         </LinkWrapper>
     )
 }
