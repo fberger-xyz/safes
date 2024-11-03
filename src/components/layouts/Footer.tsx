@@ -10,8 +10,8 @@ interface FooterProps {
 
 export default function Footer(props: FooterProps) {
     return (
-        <div className={cn('fixed bottom-0 w-full flex justify-end text-sm z-0 px-3 pb-1.5 opacity-50', props.className)}>
-            <div className="flex items-end gap-4 text-default">
+        <div className={cn('fixed bottom-0 w-full flex justify-end text-sm z-0', props.className)}>
+            <div className="flex items-end gap-4 rounded-ss-xl bg-background p-3 text-default opacity-80 backdrop-blur-sm">
                 <LinkWrapper target="_blank" href={`https://${APP_METADATA.SITE_AUTHOR}.xyz/projects/safes-trades`} className="hover:text-primary">
                     <IconWrapper icon={IconIds.WEBSITE} className="h-5 w-5" />
                 </LinkWrapper>

@@ -60,7 +60,7 @@ export default function RootLayout({
                         >
                             <div className="h-full overflow-scroll">{children}</div>
                         </Suspense>
-                        <Footer className="md:p-3" />
+                        <Footer />
                     </main>
                 </ThemeProvider>
             </body>
