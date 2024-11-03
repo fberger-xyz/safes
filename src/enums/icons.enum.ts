@@ -40,6 +40,7 @@ export enum IconIds {
 
     // apps
     SAFE = 'SAFE',
+    REVOKE = 'REVOKE',
     DEFI_SAVER = 'DEFI_SAVER',
     MORPHO = 'MORPHO',
     AAVE = 'AAVE',

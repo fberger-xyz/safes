@@ -4,6 +4,8 @@ import { SupportedAppConfig, SupportedChainConfig } from '@/interfaces'
 export const linkForChainAppAndAddress = (chain: SupportedChainConfig, app: SupportedAppConfig, address: string) => {
     // own
     if (app.id === SupportedApps.SAFE) return `https://app.safe.global/balances?safe=${chain.gnosisPrefix}:${address}`
+    if (app.id === SupportedApps.REVOKE)
+        return `https://app.safe.global/apps/open?safe=${chain.gnosisPrefix}:${address}&appUrl=https%3A%2F%2Frevoke.cash%2F`
     if (app.id === SupportedApps.ONCHAINDEN) return app.socialProfiles.find((profile) => profile.platform === 'WEBSITE')?.url ?? '/'
 
     // lend

@@ -29,9 +29,6 @@ export interface SupportedAppConfig {
     name: string
     svg?: IconIds
     iconUrl: string
-    bannerUrl: string
-    description: string
-    tags: string[]
     socialProfiles: {
         platform: SupportedSocials
         url: string

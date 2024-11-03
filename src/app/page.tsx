@@ -47,16 +47,17 @@ export default function Page() {
 
     return (
         <PageWrapper className="mb-10 gap-5">
-            <div className="mt-10 flex">
-                <div className="flex flex-col gap-2.5 border-r border-light-hover pr-6">
-                    <p className="text-light-hover">safes</p>
+            <div className="flex w-full flex-col gap-2.5 border-l border-light-hover">
+                {/* addresses */}
+                <p className="pl-6 text-light-hover">safes</p>
+                <div className="flex items-start gap-2.5 border-b border-light-hover pb-6 pl-6">
                     {parsedParams
                         .filter((param) => param.isAddress)
                         .map((address, addressIndex) => (
-                            <div key={address.value} className="flex w-full items-center justify-end gap-2">
+                            <div key={address.value} className="flex w-full items-center gap-3">
                                 <p className="text-inactive">{addressIndex + 1}</p>
                                 <button
-                                    className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-200', {
+                                    className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-100', {
                                         'bg-light-hover border-primary text-primary': selectedParam === address.value,
                                         'text-inactive hover:text-primary border-light-hover': selectedParam !== address.value,
                                     })}
@@ -70,35 +71,36 @@ export default function Page() {
                             </div>
                         ))}
                 </div>
-                <div className="flex flex-col gap-2.5">
-                    {/* chains */}
-                    <p className="pl-6 text-light-hover">chains</p>
-                    <div className="flex gap-2.5 border-b border-light-hover px-6 pb-6">
-                        {Object.values(chainsConfig)
-                            .sort((curr, next) => curr.index - next.index)
-                            .map((chain) => (
-                                <div key={chain.id} className="flex items-center gap-1.5">
-                                    <button
-                                        className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-200', {
-                                            'text-primary bg-light-hover border-primary': selectedChain === chain.id,
-                                            'text-inactive hover:text-primary border-light-hover': selectedChain !== chain.id,
-                                        })}
-                                        onClick={() => actions.setSelectedChain(chain.id)}
-                                    >
-                                        <Image
-                                            src={`https://safe-transaction-assets.safe.global/chains/${chain.id}/chain_logo.png`}
-                                            width={24}
-                                            height={24}
-                                            alt={chain.gnosisPrefix}
-                                        />
-                                    </button>
-                                </div>
-                            ))}
-                    </div>
 
-                    {/* apps */}
+                {/* chains */}
+                <p className="pl-6 text-light-hover">chains</p>
+                <div className="flex gap-2.5 border-b border-light-hover px-6 pb-6">
+                    {Object.values(chainsConfig)
+                        .sort((curr, next) => curr.index - next.index)
+                        .map((chain) => (
+                            <div key={chain.id} className="flex items-center gap-1.5">
+                                <button
+                                    className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-100', {
+                                        'text-primary bg-light-hover border-primary': selectedChain === chain.id,
+                                        'text-inactive hover:text-primary border-light-hover': selectedChain !== chain.id,
+                                    })}
+                                    onClick={() => actions.setSelectedChain(chain.id)}
+                                >
+                                    <Image
+                                        src={`https://safe-transaction-assets.safe.global/chains/${chain.id}/chain_logo.png`}
+                                        width={24}
+                                        height={24}
+                                        alt={chain.gnosisPrefix}
+                                    />
+                                </button>
+                            </div>
+                        ))}
+                </div>
+
+                {/* apps */}
+                <div className="flex flex-wrap gap-x-6 gap-y-4 pl-6">
                     {supportedCategoriesConfig.map((category) => (
-                        <div key={category.name} className="flex flex-col gap-2.5 pl-6">
+                        <div key={category.name} className="flex flex-col gap-2.5">
                             <p className="w-12 text-light-hover">{category.name}</p>
                             <div className="flex gap-1.5">
                                 {category.apps.map((app) => (

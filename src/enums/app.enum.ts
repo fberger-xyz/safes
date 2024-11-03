@@ -33,6 +33,7 @@ export enum SupportedAppsCategories {
 
 export enum SupportedApps {
     SAFE = 'SAFE',
+    REVOKE = 'REVOKE',
     DEFI_SAVER = 'DEFI_SAVER',
     MORPHO = 'MORPHO',
     AAVE = 'AAVE',

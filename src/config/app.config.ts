@@ -39,17 +39,14 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.SAFE,
                 name: 'Safe',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1643941027898613760/gyhYEOCE_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/8467082/1715770781/1080x360',
-                description: 'Largest smart account ecosystem on the EVM',
-                tags: ['Multisig'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
-                        url: 'todo',
+                        url: '',
                     },
                     {
                         platform: SupportedSocials.GITHUB,
-                        url: 'todo',
+                        url: '',
                     },
                     {
                         platform: SupportedSocials.TWITTER,
@@ -62,13 +59,34 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 ],
             },
             {
+                id: SupportedApps.REVOKE,
+                svg: undefined,
+                name: 'Revoke',
+                iconUrl: 'https://safe-transaction-assets.safe.global/safe_apps/88/icon.png',
+                socialProfiles: [
+                    {
+                        platform: SupportedSocials.DISCORD,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.GITHUB,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.TWITTER,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.WEBSITE,
+                        url: '',
+                    },
+                ],
+            },
+            {
                 id: SupportedApps.ONCHAINDEN,
                 svg: undefined,
                 name: 'Onchain Den',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1838330609543880704/55neQ_sj_400x400.png',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1475562072872304644/1727127470/1080x360',
-                description: 'The fastest multisig for onchain teams',
-                tags: ['Multisig'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -98,9 +116,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.AAVE,
                 name: 'Aave',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1808921860781821952/CmtvkzWo_400x400.png',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1719825249397604352/1698873437/1080x360',
-                description: 'Building the future of DeFi',
-                tags: ['DeFi', 'Lending/Borrowing'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -125,9 +140,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.MORPHO,
                 name: 'Morpho',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1712024635590455296/ksuEkiF7_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1420789685811650560/1697013456/1080x360',
-                description: 'Earn, Borrow, Build on Morpho',
-                tags: ['DeFi', 'Lending/Borrowing'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -157,9 +169,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.COWSWAP,
                 name: 'CoW Swap',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1805606768266924032/nzzLCHXW_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1383143419128782848/1719325175/1080x360',
-                description: 'User-protective products for Ethereum',
-                tags: ['Aggregator', 'DAO Tooling', 'MEV Protection'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -184,17 +193,14 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.ONEINCH,
                 name: '1inch',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1803771489025470466/JSzaEa9X_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1137038394503114753/1718887613/1080x360',
-                description: 'Trustless, non-custodial, on-chain trading platform',
-                tags: ['Aggregator', 'DAO Tooling', 'MEV Protection'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
-                        url: 'todo',
+                        url: '',
                     },
                     {
                         platform: SupportedSocials.GITHUB,
-                        url: 'todo',
+                        url: '',
                     },
                     {
                         platform: SupportedSocials.TWITTER,
@@ -211,9 +217,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.DEFI_SAVER,
                 name: 'DeFi Saver',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1717844708083347456/02FNBrqO_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1120736534704066561/1698401070/1080x360',
-                description: 'DeFi management dashboard',
-                tags: ['Automation', 'Dashboard', 'DeFi'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -243,9 +246,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.DEBANK,
                 name: 'Debank',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1414880725921267716/YzVitob7_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1156037602488639490/1715323254/1080x360',
-                description: 'The Real User Based Web3 Community',
-                tags: ['Portfolio tracker'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -270,9 +270,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.ZERION,
                 name: 'Zerion',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1639841598648512515/RXG5M-pv_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/895030804383969283/1687375429/1080x360',
-                description: 'Your crypto wallet for everything onchain',
-                tags: ['Portfolio tracker'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
@@ -297,9 +294,6 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                 svg: IconIds.ZAPPER,
                 name: 'Zapper',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1681396816737181707/MZVvpTPr_400x400.jpg',
-                bannerUrl: 'https://pbs.twimg.com/profile_banners/1208076242366283776/1704754033/1080x360',
-                description: 'Track your DeFi and NFT portfolio',
-                tags: ['Portfolio tracker'],
                 socialProfiles: [
                     {
                         platform: SupportedSocials.DISCORD,
