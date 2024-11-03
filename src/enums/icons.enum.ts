@@ -37,4 +37,16 @@ export enum IconIds {
     // evm
     TRANSACTION = 'carbon:text-align-center',
     CONTRACT = 'carbon:cics-program',
+
+    // apps
+    SAFE = 'SAFE',
+    DEFI_SAVER = 'DEFI_SAVER',
+    MORPHO = 'MORPHO',
+    AAVE = 'AAVE',
+    COWSWAP = 'COWSWAP',
+    ONEINCH = '1INCH',
+    ONCHAINDEN = 'ONCHAINDEN',
+    DEBANK = 'DEBANK',
+    ZERION = 'ZERION',
+    ZAPPER = 'ZAPPER',
 }

@@ -11,7 +11,7 @@ export default function Page() {
                     href={`https://${APP_METADATA.SITE_AUTHOR}.xyz/projects/safes-trades`}
                     className=" flex gap-1 text-default hover:text-primary"
                 >
-                    <p>tba</p>
+                    <p>One entrypoint to manage severals safes</p>
                 </LinkWrapper>
             </div>
         </PageWrapper>

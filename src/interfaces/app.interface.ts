@@ -1,4 +1,4 @@
-import { AppPagePaths, IconIds } from '../enums'
+import { AppPagePaths, IconIds, SupportedApps, SupportedChains, SupportedSocials } from '../enums'
 
 export interface InterfaceAppLink {
     name: string
@@ -12,4 +12,28 @@ export interface InterfaceAppLink {
 export interface APIResponse<Data> {
     data?: Data
     error: string
+}
+
+/**
+ * specific
+ */
+
+export interface SupportedChainConfig {
+    id: SupportedChains
+    index: number
+    gnosisPrefix: string
+}
+
+export interface SupportedAppConfig {
+    id: SupportedApps
+    name: string
+    svg?: IconIds
+    iconUrl: string
+    bannerUrl: string
+    description: string
+    tags: string[]
+    socialProfiles: {
+        platform: SupportedSocials
+        url: string
+    }[]
 }
