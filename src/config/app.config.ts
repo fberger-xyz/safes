@@ -3,7 +3,7 @@ import { SupportedAppConfig, SupportedChainConfig } from '@/interfaces'
 
 export const APP_METADATA = {
     SITE_AUTHOR: 'fberger',
-    SITE_NAME: 'safes',
+    SITE_NAME: 'safes | fberger',
     SITE_INFO: 'SITE_INFO',
     SITE_DESCRIPTION: 'One linktree to manage your safes',
     SITE_URL: 'https://safes.fberger.xyz',
