@@ -50,4 +50,9 @@ export enum IconIds {
     DEBANK = 'DEBANK',
     ZERION = 'ZERION',
     ZAPPER = 'ZAPPER',
+
+    // farside
+    RANK = 'carbon:trophy',
+    SCROLL = 'hugeicons:mouse-scroll-01',
+    LOADING = 'line-md:loading-twotone-loop',
 }
