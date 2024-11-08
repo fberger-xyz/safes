@@ -168,7 +168,7 @@ export default function Page() {
                                             disabled={!app.networks.includes(selectedChain)}
                                             onClick={() => {
                                                 copyToClipboard(linkForChainAppAndAddress(chainsConfig[selectedChain], app, selectedSafe))
-                                                toast.success('Copied', { style: toastStyle })
+                                                toast.success(`Copied link to ${app.name}`, { style: toastStyle })
                                             }}
                                             className={cn('text-inactive', {
                                                 'hover:text-primary': app.networks.includes(selectedChain),
@@ -182,6 +182,21 @@ export default function Page() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* pending orders */}
+                <p className="pl-5 text-light-hover">url to save in your favorite password manager</p>
+                <div className="flex items-start gap-2.5 border-b border-light-hover pb-5 pl-5">
+                    <button
+                        onClick={() => {
+                            copyToClipboard(String(window.location))
+                            toast.success(`Copied current URL`, { style: toastStyle })
+                        }}
+                        className="flex gap-2 text-sm text-inactive hover:text-primary"
+                    >
+                        <p>URL</p>
+                        <IconWrapper icon={IconIds.CARBON_COPY} className="size-4" />
+                    </button>
                 </div>
 
                 {/* pending orders */}
