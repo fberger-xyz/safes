@@ -23,37 +23,43 @@ export default function Page() {
     const { selectedSafe, selectedChain, parsedSafes, actions } = useParamsStore()
 
     useEffect(() => {
-        // parse safes
+        // Parse safes
         const _rawSafes = searchParams.get('safes') ?? ''
         const _splittedSafes = _rawSafes.split(',')
         const _parsedSafes: ParsedParam[] = []
         let _selected = ''
-        if (Array.isArray(_splittedSafes)) {
-            for (let paramIndex = 0; paramIndex < _splittedSafes.length; paramIndex++) {
-                const value = String(_splittedSafes[paramIndex]).trim().toLowerCase()
-                if (_parsedSafes.some((param) => param.value === value)) continue
-                const isAddress = ethers.isAddress(value)
-                if (!_selected && isAddress) _selected = value
-                _parsedSafes.push({ value, isAddress })
-            }
-        }
+
+        _splittedSafes.forEach((safe) => {
+            const value = safe.trim().toLowerCase()
+            if (_parsedSafes.some((param) => param.value === value)) return
+            const isAddress = ethers.isAddress(value)
+            if (!_selected && isAddress) _selected = value
+            _parsedSafes.push({ value, isAddress })
+        })
+
         if (!_selected) _parsedSafes.push({ value: '0xC234E41AE2cb00311956Aa7109fC801ae8c80941', isAddress: true })
 
-        // parse address
-        const _rawChain = String(searchParams.get('chain')).toLowerCase()
+        // Parse chain
+        const _rawChain = searchParams.get('chain') ?? ''
+        const _parsedChain = Number(_rawChain) in SupportedChains ? Number(_rawChain) : SupportedChains.ETH
 
-        // router
-        const _parsedChain = _rawChain in SupportedChains ? (_rawChain as unknown as SupportedChains) : SupportedChains.ETH
-        router.push(
-            `?chain=${_parsedChain}&safes=${_parsedSafes
-                .filter((param) => param.isAddress)
-                .map((address) => address.value)
-                .join(',')}`,
-        )
-
-        // set store
-        actions.setParams(_rawSafes, _parsedSafes, _selected, String(searchParams.get('chain')).toLowerCase(), _parsedChain)
+        // Set parameters in store
+        actions.setParams(_rawSafes, _parsedSafes, _selected, _rawChain, _parsedChain)
     }, [searchParams])
+
+    useEffect(() => {
+        // Update router only if needed
+        const currentURLParams = `?chain=${selectedChain}&safes=${parsedSafes
+            .filter((param) => param.isAddress)
+            .map((address) => address.value)
+            .join(',')}`
+
+        const queryString = searchParams.toString()
+
+        if (queryString !== currentURLParams) {
+            router.replace(currentURLParams)
+        }
+    }, [parsedSafes, selectedChain, searchParams])
 
     return (
         <PageWrapper className="mb-10 gap-5">
@@ -63,9 +69,9 @@ export default function Page() {
                 <div className="flex items-start gap-2.5 border-b border-light-hover pb-5 pl-5">
                     {parsedSafes
                         .filter((param) => param.isAddress)
-                        .map((address, addressIndex) => (
+                        .map((address, index) => (
                             <div key={address.value} className="flex w-full items-center gap-3">
-                                <p className="text-inactive">{addressIndex + 1}</p>
+                                <p className="text-inactive">{index + 1}</p>
                                 <button
                                     className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-100', {
                                         'bg-light-hover border-primary text-primary': selectedSafe === address.value,
@@ -73,7 +79,7 @@ export default function Page() {
                                     })}
                                     onClick={() => actions.setSelectedAddress(address.value)}
                                 >
-                                    {address.isAddress ? <p>{shortenAddress(address.value)}</p> : <p>{address.value}</p>}
+                                    <p>{shortenAddress(address.value)}</p>
                                 </button>
                                 <button className="flex items-center text-inactive hover:text-primary">
                                     <IconWrapper icon={IconIds.CARBON_COPY} className="h-4 w-4" />
@@ -86,11 +92,11 @@ export default function Page() {
                 <p className="pl-5 text-light-hover">chains</p>
                 <div className="flex items-start gap-2.5 border-b border-light-hover pb-5 pl-5">
                     {Object.values(chainsConfig)
-                        .sort((curr, next) => curr.index - next.index)
+                        .sort((a, b) => a.index - b.index)
                         .map((chain) => (
-                            <div key={chain.id} className="flex items-center gap-1.5">
+                            <div key={chain.id} className="flex items-center gap-1.5 transition-all duration-100">
                                 <button
-                                    className={cn('flex gap-3 rounded-md border px-2.5 py-1.5 transition-all duration-100', {
+                                    className={cn('flex gap-3 rounded-md border px-2.5 py-1.5', {
                                         'text-primary bg-light-hover border-primary': selectedChain === chain.id,
                                         'text-inactive hover:text-primary border-light-hover': selectedChain !== chain.id,
                                     })}
@@ -117,7 +123,7 @@ export default function Page() {
                                     <div
                                         key={app.id}
                                         className={cn('flex items-center gap-3 rounded-md border border-light-hover px-2.5 py-1.5', {
-                                            'opacity-10': !app.networks.includes(selectedChain),
+                                            'opacity-20 border-dashed': !app.networks.includes(selectedChain),
                                         })}
                                     >
                                         <LinkWrapper
