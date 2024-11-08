@@ -44,6 +44,6 @@ export enum SupportedApps {
 export enum SupportedSocials {
     DISCORD = 'DISCORD',
     GITHUB = 'GITHUB',
-    TWITTER = 'TWITTER',
+    X = 'X',
     WEBSITE = 'WEBSITE',
 }

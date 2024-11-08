@@ -9,7 +9,7 @@ export default function Page() {
                 <LinkWrapper
                     target="_blank"
                     href={`https://${APP_METADATA.SITE_AUTHOR}.xyz/projects/safes`}
-                    className=" flex gap-1 text-default hover:text-primary"
+                    className=" flex gap-1 hover:text-primary"
                 >
                     <p>{APP_METADATA.SITE_DESCRIPTION}</p>
                 </LinkWrapper>

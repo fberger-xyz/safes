@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Ubuntu_Mono } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
 import { APP_METADATA } from '../config/app.config'
 import { cn } from '../utils'
@@ -8,9 +8,10 @@ import { Suspense } from 'react'
 import Footer from '../components/layouts/Footer'
 import { ThemeProvider } from 'next-themes'
 import { AppThemes } from '@/enums'
+import { Toaster } from 'react-hot-toast'
 
 // https://fonts.google.com/
-const font = Ubuntu_Mono({ weight: ['400', '700'], subsets: ['latin'] })
+const font = Nunito_Sans({ weight: ['400', '700'], subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: APP_METADATA.SITE_NAME,
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        site: APP_METADATA.SOCIALS.TWITTER,
+        site: APP_METADATA.SOCIALS.X,
         title: APP_METADATA.SITE_NAME,
         description: APP_METADATA.SITE_DESCRIPTION,
         images: '/opengraph-image',
@@ -61,6 +62,7 @@ export default function RootLayout({
                             <div className="h-full overflow-scroll">{children}</div>
                         </Suspense>
                         <Footer />
+                        <Toaster position="bottom-center" reverseOrder={false} />
                     </main>
                 </ThemeProvider>
             </body>

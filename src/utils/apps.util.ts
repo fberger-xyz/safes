@@ -31,3 +31,11 @@ export const linkForChainAppAndAddress = (chain: SupportedChainConfig, app: Supp
     // -
     return '/'
 }
+
+export const copyToClipboard = (value: string) => {
+    try {
+        navigator.clipboard.writeText(value)
+    } catch (error) {
+        console.log(error)
+    }
+}

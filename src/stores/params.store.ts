@@ -1,27 +1,30 @@
-import { SupportedChains } from '@/enums';
+import { SupportedChains } from '@/enums'
 import { create } from 'zustand'
 
 export type ParsedParam = { value: string; isAddress: boolean }
 
 export const useParamsStore = create<{
-    rawParams: string
-    parsedParams: { value: string; isAddress: boolean }[]
-    selectedParam: string
+    rawSafes: string
+    parsedSafes: { value: string; isAddress: boolean }[]
+    selectedSafe: string
+    rawChain: string
     selectedChain: SupportedChains
     actions: {
-        setParams: (rawParams: string, parsedParams: ParsedParam[], selectedParam: string) => void
-        setSelectedAddress: (selectedParam: string) => void
+        setParams: (rawSafes: string, parsedSafes: ParsedParam[], selectedSafe: string, rawChain: string, selectedChain: SupportedChains) => void
+        setSelectedAddress: (selectedSafe: string) => void
         setSelectedChain: (selectedChain: SupportedChains) => void
     }
     computeds: Record<string, () => void>
 }>((set) => ({
-    rawParams: '',
-    parsedParams: [],
-    selectedParam: '',
+    rawSafes: '',
+    parsedSafes: [],
+    selectedSafe: '',
+    rawChain: '',
     selectedChain: SupportedChains.ETH,
     actions: {
-        setParams: (rawParams, parsedParams, selectedParam) => set(() => ({ rawParams, parsedParams, selectedParam })),
-        setSelectedAddress: (selectedParam) => set(() => ({ selectedParam })),
+        setParams: (rawSafes, parsedSafes, selectedSafe, rawChain, selectedChain) =>
+            set(() => ({ rawSafes, parsedSafes, selectedSafe, rawChain, selectedChain })),
+        setSelectedAddress: (selectedSafe) => set(() => ({ selectedSafe })),
         setSelectedChain: (selectedChain) => set(() => ({ selectedChain })),
     },
     computeds: {},

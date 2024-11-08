@@ -2,14 +2,7 @@ import React, { SVGProps } from 'react'
 
 export default function SafeSVG(props: SVGProps<SVGSVGElement>) {
     return (
-        <svg
-            className={props.className}
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            width="24"
-            height="24"
-            fill="none"
-        >
+        <svg className={props.className} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="none">
             <g clipPath="url(#a)">
                 <path
                     fill="#121312"

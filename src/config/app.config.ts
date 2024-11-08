@@ -8,7 +8,7 @@ export const APP_METADATA = {
     SITE_DESCRIPTION: 'One linktree to manage your safes',
     SITE_URL: 'https://safes.fberger.xyz',
     SOCIALS: {
-        TWITTER: 'fberger_xyz',
+        X: 'fberger_xyz',
         TELEGRAM: 'fberger_xyz',
         LINKEDIN: 'francis-berger-a2404094',
     },
@@ -25,7 +25,7 @@ export const APP_THEMES: Partial<Record<AppThemes, { index: number; iconId: Icon
 
 export const chainsConfig: Record<SupportedChains, SupportedChainConfig> = {
     [SupportedChains.ETH]: { index: 1, id: SupportedChains.ETH, gnosisPrefix: 'eth' },
-    [SupportedChains.ARBITRUM]: { index: 2, id: SupportedChains.ARBITRUM, gnosisPrefix: 'arb' },
+    [SupportedChains.ARBITRUM]: { index: 2, id: SupportedChains.ARBITRUM, gnosisPrefix: 'arb1' },
     [SupportedChains.BASE]: { index: 3, id: SupportedChains.BASE, gnosisPrefix: 'base' },
     [SupportedChains.GNOSIS]: { index: 4, id: SupportedChains.GNOSIS, gnosisPrefix: 'gno' },
 }
@@ -37,6 +37,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.SAFE,
                 svg: IconIds.SAFE,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Safe',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1643941027898613760/gyhYEOCE_400x400.jpg',
                 socialProfiles: [
@@ -49,7 +50,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/safe',
                     },
                     {
@@ -61,6 +62,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.REVOKE,
                 svg: undefined,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Revoke',
                 iconUrl: 'https://safe-transaction-assets.safe.global/safe_apps/88/icon.png',
                 socialProfiles: [
@@ -73,7 +75,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: '',
                     },
                     {
@@ -85,6 +87,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.ONCHAINDEN,
                 svg: undefined,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Onchain Den',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1838330609543880704/55neQ_sj_400x400.png',
                 socialProfiles: [
@@ -97,7 +100,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/OnChainDen',
                     },
                     {
@@ -114,6 +117,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.AAVE,
                 svg: IconIds.AAVE,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Aave',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1808921860781821952/CmtvkzWo_400x400.png',
                 socialProfiles: [
@@ -126,7 +130,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: 'https://github.com/aave',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://twitter.com/aaveaave',
                     },
                     {
@@ -138,6 +142,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.MORPHO,
                 svg: IconIds.MORPHO,
+                networks: [SupportedChains.ETH, SupportedChains.BASE],
                 name: 'Morpho',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1712024635590455296/ksuEkiF7_400x400.jpg',
                 socialProfiles: [
@@ -150,7 +155,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: 'https://github.com/morpho-org',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/MorphoLabs',
                     },
                     {
@@ -167,6 +172,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.COWSWAP,
                 svg: IconIds.COWSWAP,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.GNOSIS],
                 name: 'CoW Swap',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1805606768266924032/nzzLCHXW_400x400.jpg',
                 socialProfiles: [
@@ -179,7 +185,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: 'https://github.com/cowprotocol',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://twitter.com/CoWSwap',
                     },
                     {
@@ -191,6 +197,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.ONEINCH,
                 svg: IconIds.ONEINCH,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: '1inch',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1803771489025470466/JSzaEa9X_400x400.jpg',
                 socialProfiles: [
@@ -203,7 +210,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/1inch',
                     },
                     {
@@ -215,6 +222,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.DEFI_SAVER,
                 svg: IconIds.DEFI_SAVER,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE],
                 name: 'DeFi Saver',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1717844708083347456/02FNBrqO_400x400.jpg',
                 socialProfiles: [
@@ -227,7 +235,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: 'https://github.com/defisaver/defisaver-v3-contracts',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/DeFiSaver',
                     },
                     {
@@ -244,6 +252,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.DEBANK,
                 svg: IconIds.DEBANK,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Debank',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1414880725921267716/YzVitob7_400x400.jpg',
                 socialProfiles: [
@@ -256,7 +265,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/DeBankDeFi',
                     },
                     {
@@ -268,6 +277,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.ZERION,
                 svg: IconIds.ZERION,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Zerion',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1639841598648512515/RXG5M-pv_400x400.jpg',
                 socialProfiles: [
@@ -280,7 +290,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/zerion',
                     },
                     {
@@ -292,6 +302,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
             {
                 id: SupportedApps.ZAPPER,
                 svg: IconIds.ZAPPER,
+                networks: [SupportedChains.ETH, SupportedChains.ARBITRUM, SupportedChains.BASE, SupportedChains.GNOSIS],
                 name: 'Zapper',
                 iconUrl: 'https://pbs.twimg.com/profile_images/1681396816737181707/MZVvpTPr_400x400.jpg',
                 socialProfiles: [
@@ -304,7 +315,7 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
                         url: '',
                     },
                     {
-                        platform: SupportedSocials.TWITTER,
+                        platform: SupportedSocials.X,
                         url: 'https://x.com/zapper_fi',
                     },
                     {

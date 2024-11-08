@@ -26,6 +26,7 @@ export interface SupportedChainConfig {
 
 export interface SupportedAppConfig {
     id: SupportedApps
+    networks: SupportedChains[]
     name: string
     svg?: IconIds
     iconUrl: string
