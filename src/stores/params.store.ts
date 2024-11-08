@@ -10,7 +10,7 @@ export const useParamsStore = create<{
     rawChain: string
     selectedChain: SupportedChains
     actions: {
-        setParams: (rawSafes: string, parsedSafes: ParsedParam[], selectedSafe: string, rawChain: string, selectedChain: number) => void
+        setParams: (rawSafes: string, parsedSafes: ParsedParam[], selectedSafe: string, rawChain: string, selectedChain: SupportedChains) => void
         setSelectedAddress: (selectedSafe: string) => void
         setSelectedChain: (selectedChain: SupportedChains) => void
     }
