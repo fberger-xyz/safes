@@ -1,7 +1,6 @@
 import { SupportedChains } from '@/enums'
+import { ParsedParam } from '@/interfaces'
 import { create } from 'zustand'
-
-export type ParsedParam = { value: string; isAddress: boolean }
 
 export const useParamsStore = create<{
     rawSafes: string

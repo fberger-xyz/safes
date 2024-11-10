@@ -18,6 +18,8 @@ export interface APIResponse<Data> {
  * specific
  */
 
+export type ParsedParam = { value: string; isAddress: boolean }
+
 export interface SupportedChainConfig {
     id: SupportedChains
     index: number

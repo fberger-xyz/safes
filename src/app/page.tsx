@@ -2,8 +2,7 @@
 
 import PageWrapper from '@/components/common/PageWrapper'
 import { useSearchParams } from 'next/navigation'
-import { ethers } from 'ethers'
-import { ParsedParam, useParamsStore } from '@/stores/params.store'
+import { useParamsStore } from '@/stores/params.store'
 import { useEffect } from 'react'
 import { cn, shortenAddress } from '@/utils'
 import IconWrapper from '@/components/common/IconWrapper'
@@ -12,44 +11,49 @@ import { chainsConfig, supportedCategoriesConfig } from '@/config/app.config'
 import Image from 'next/image'
 import LinkWrapper from '@/components/common/LinkWrapper'
 import SvgMapper from '@/components/common/SvgMapper'
-import { copyToClipboard, linkForChainAppAndAddress } from '@/utils/apps.util'
+import { copyToClipboard, getSafesFromParams, linkForChainAppAndAddress } from '@/utils/apps.util'
 import { useRouter } from 'next/navigation'
 import { toastStyle } from '@/config/toasts.config'
 import toast from 'react-hot-toast'
+
+// server side only
+// export async function generateMetadata({
+//     searchParams,
+// }: {
+//     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+// }): Promise<Metadata> {
+//     // read searchParams
+//     const queryString = await searchParams
+//     const { _selected } = getSafes(String(queryString))
+
+//     return {
+//         title: `safes | ${_selected}`,
+//     }
+// }
 
 export default function Page() {
     const searchParams = useSearchParams()
     const router = useRouter()
     const { selectedSafe, selectedChain, parsedSafes, actions } = useParamsStore()
-    console.log('render')
 
     useEffect(() => {
-        // Parse safes
+        // parse safes
         const _rawSafes = searchParams.get('safes') ?? ''
-        const _splittedSafes = _rawSafes.split(',')
-        const _parsedSafes: ParsedParam[] = []
-        let _selected = ''
+        const { _parsedSafes, _selected } = getSafesFromParams(_rawSafes)
 
-        _splittedSafes.forEach((safe) => {
-            const value = safe.trim().toLowerCase()
-            if (_parsedSafes.some((param) => param.value === value)) return
-            const isAddress = ethers.isAddress(value)
-            if (!_selected && isAddress) _selected = value
-            _parsedSafes.push({ value, isAddress })
-        })
-
-        if (!_selected) _parsedSafes.push({ value: '0xC234E41AE2cb00311956Aa7109fC801ae8c80941', isAddress: true })
-
-        // Parse chain
+        // parse chain
         const _rawChain = searchParams.get('chain') ?? ''
-        const _parsedChain = Number(_rawChain) in SupportedChains ? Number(_rawChain) : SupportedChains.ETH
+        const _parsedChain = Number(_rawChain) in SupportedChains ? (Number(_rawChain) as SupportedChains) : SupportedChains.ETH
 
-        // Set parameters in store
+        // set page title
+        if (document) document.title = `safes | ${chainsConfig[_parsedChain].gnosisPrefix}:${shortenAddress(_selected)}`
+
+        // set parameters in store
         actions.setParams(_rawSafes, _parsedSafes, _selected, _rawChain, _parsedChain)
     }, [searchParams])
 
     useEffect(() => {
-        // Update router only if needed
+        // update router only if needed
         const currentURLParams = `?chain=${selectedChain}&safes=${parsedSafes
             .filter((param) => param.isAddress)
             .map((address) => address.value)
@@ -60,10 +64,10 @@ export default function Page() {
         if (queryString !== currentURLParams) {
             router.replace(currentURLParams)
         }
-    }, [parsedSafes, searchParams])
+    }, [parsedSafes, selectedChain])
 
     useEffect(() => {
-        // Update router only if needed
+        // update router only if needed
         const othersSafes = parsedSafes
             .filter((param) => param.isAddress)
             .filter((param) => param.value !== selectedSafe)
@@ -147,7 +151,7 @@ export default function Page() {
                                     >
                                         <LinkWrapper
                                             target="_blank"
-                                            className={cn('flex items-center gap-3', {
+                                            className={cn('flex items-center gap-3 w-fit', {
                                                 group: app.networks.includes(selectedChain),
                                                 'cursor-not-allowed': !app.networks.includes(selectedChain),
                                             })}
@@ -157,7 +161,14 @@ export default function Page() {
                                             {app.svg ? (
                                                 <SvgMapper icon={app.svg} className="size-6 text-inactive" />
                                             ) : (
-                                                <Image src={app.iconUrl} width={22} height={22} alt={app.id} className="rounded-full" />
+                                                <Image
+                                                    loading="lazy"
+                                                    src={app.iconUrl}
+                                                    width={24}
+                                                    height={24}
+                                                    alt={app.id}
+                                                    className="min-w-6 rounded-full"
+                                                />
                                             )}
                                             <IconWrapper
                                                 icon={IconIds.IC_BASELINE_OPEN_IN_NEW}
@@ -170,7 +181,7 @@ export default function Page() {
                                                 copyToClipboard(linkForChainAppAndAddress(chainsConfig[selectedChain], app, selectedSafe))
                                                 toast.success(`Copied link to ${app.name}`, { style: toastStyle })
                                             }}
-                                            className={cn('text-inactive', {
+                                            className={cn('text-inactive size-5', {
                                                 'hover:text-primary': app.networks.includes(selectedChain),
                                                 'cursor-not-allowed': !app.networks.includes(selectedChain),
                                             })}

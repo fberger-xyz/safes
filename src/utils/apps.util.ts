@@ -1,5 +1,6 @@
 import { SupportedApps } from '@/enums'
-import { SupportedAppConfig, SupportedChainConfig } from '@/interfaces'
+import { ParsedParam, SupportedAppConfig, SupportedChainConfig } from '@/interfaces'
+import { ethers } from 'ethers'
 
 export const linkForChainAppAndAddress = (chain: SupportedChainConfig, app: SupportedAppConfig, address: string) => {
     // own
@@ -38,4 +39,25 @@ export const copyToClipboard = (value: string) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const getSafesFromParams = (_rawSafes: string) => {
+    // prepare
+    const _splittedSafes = _rawSafes.split(',')
+    const _parsedSafes: ParsedParam[] = []
+    let _selected = ''
+
+    // for each string
+    _splittedSafes.forEach((safe) => {
+        const value = safe.trim().toLowerCase()
+        if (_parsedSafes.some((param) => param.value === value)) return
+        const isAddress = ethers.isAddress(value)
+        if (!_selected && isAddress) _selected = value
+        _parsedSafes.push({ value, isAddress })
+    })
+
+    // default select
+    if (!_selected) _parsedSafes.push({ value: '0xC234E41AE2cb00311956Aa7109fC801ae8c80941', isAddress: true })
+
+    return { _splittedSafes, _parsedSafes, _selected }
 }
