@@ -146,13 +146,14 @@ export default function Page() {
                                     <div
                                         key={app.id}
                                         className={cn('flex items-center gap-3 rounded-md border border-light-hover px-2.5 py-1.5', {
-                                            'opacity-20 border-dashed': !app.networks.includes(selectedChain),
+                                            'grayscale opacity-50 border-dashed': !app.networks.includes(selectedChain),
                                         })}
                                     >
                                         <LinkWrapper
                                             target="_blank"
                                             className={cn('flex items-center gap-3 w-fit', {
                                                 group: app.networks.includes(selectedChain),
+                                                'cursor-alias': app.networks.includes(selectedChain),
                                                 'cursor-not-allowed': !app.networks.includes(selectedChain),
                                             })}
                                             disabled={!app.networks.includes(selectedChain)}
@@ -182,7 +183,7 @@ export default function Page() {
                                                 toast.success(`Copied link to ${app.name}`, { style: toastStyle })
                                             }}
                                             className={cn('text-inactive size-5', {
-                                                'hover:text-primary': app.networks.includes(selectedChain),
+                                                'hover:text-primary cursor-copy': app.networks.includes(selectedChain),
                                                 'cursor-not-allowed': !app.networks.includes(selectedChain),
                                             })}
                                         >
