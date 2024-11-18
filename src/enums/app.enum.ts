@@ -23,7 +23,7 @@ export enum SupportedAppsCategories {
     OWN = 'own',
     LEND = 'lend',
     TRADE = 'trade',
-    // AUTOMATE = 'automate',
+    HEDGE = 'hedge',
     TRACK = 'track',
 }
 
@@ -36,6 +36,7 @@ export enum SupportedApps {
     COWSWAP = 'COWSWAP',
     ONEINCH = '1INCH',
     ONCHAINDEN = 'ONCHAINDEN',
+    DERIVE = 'DERIVE',
     DEBANK = 'DEBANK',
     ZERION = 'ZERION',
     ZAPPER = 'ZAPPER',

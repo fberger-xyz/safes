@@ -47,6 +47,7 @@ export enum IconIds {
     COWSWAP = 'COWSWAP',
     ONEINCH = '1INCH',
     ONCHAINDEN = 'ONCHAINDEN',
+    DERIVE = 'DERIVE',
     DEBANK = 'DEBANK',
     ZERION = 'ZERION',
     ZAPPER = 'ZAPPER',

@@ -247,6 +247,36 @@ export const supportedCategoriesConfig: { name: SupportedAppsCategories; apps: S
         ],
     },
     {
+        name: SupportedAppsCategories.HEDGE,
+        apps: [
+            {
+                id: SupportedApps.DERIVE,
+                svg: IconIds.DERIVE,
+                networks: [],
+                name: 'Derive',
+                iconUrl: 'tba',
+                socialProfiles: [
+                    {
+                        platform: SupportedSocials.DISCORD,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.GITHUB,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.X,
+                        url: '',
+                    },
+                    {
+                        platform: SupportedSocials.WEBSITE,
+                        url: '',
+                    },
+                ],
+            },
+        ],
+    },
+    {
         name: SupportedAppsCategories.TRACK,
         apps: [
             {
